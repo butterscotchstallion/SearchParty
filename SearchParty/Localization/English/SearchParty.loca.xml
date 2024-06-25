@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <!-- Wand Item -->
+    <content contentuid="h2539346b99534f58a040c2d5da9f4950gd84" version="1">Wand of Transformation</content>
+    <content contentuid="hb4e8134e211e46eb963b65f2c8a5392983b3" version="1">An ancient wand of great power, said to transform the wielder if pointed at some objects</content>
+    <!-- Transform Spell -->
+    <content contentuid="he7e684033581459680a7c5cfa237354760ed" version="1">Transform</content>
+    <content contentuid="hfdb3fcba5f124a6ab46d25d46ca54c578584" version="1">Transform into the targeted object</content>
+</contentList>

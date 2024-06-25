@@ -1,0 +1,11 @@
+new entry "Target_SP_Transform"
+	type "SpellData"
+		data "SpellType" "Target"
+		data "DisplayName" "he7e684033581459680a7c5cfa237354760ed"
+		data "Description" "hfdb3fcba5f124a6ab46d25d46ca54c578584"
+		data "Icon" "PassiveFeature_Shapechanger"
+
+		//data "TargetConditions" "Item()"
+        //TODO: add status check here
+        //RequirementConditions ""
+		

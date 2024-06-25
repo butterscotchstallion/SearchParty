@@ -1,0 +1,4 @@
+new entry "SP_WAND_OF_TRANSFORMATION"
+	type "Object"
+	using "TOOL_Wand_Fireballs"
+		data "RootTemplate" "3d604c20-3390-44d6-bf21-89d26de1a671"
