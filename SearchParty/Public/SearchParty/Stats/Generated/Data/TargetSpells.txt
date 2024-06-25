@@ -4,8 +4,11 @@ new entry "Target_SP_Transform"
 		data "DisplayName" "he7e684033581459680a7c5cfa237354760ed"
 		data "Description" "hfdb3fcba5f124a6ab46d25d46ca54c578584"
 		data "Icon" "PassiveFeature_Shapechanger"
+		data "TargetConditions" "Item()"
+		data "PrepareEffect" "56ee7250-df2b-46b5-9ddb-0aec6c0d99f0"
+		data "CastEffect" "f025276a-09c4-4b44-bcbc-bf334a059094"
+		data "TargetEffect" "456d73c1-3cc8-4556-b76a-3d16fd25ba3e"
 
-		//data "TargetConditions" "Item()"
         //TODO: add status check here
         //RequirementConditions ""
 		
