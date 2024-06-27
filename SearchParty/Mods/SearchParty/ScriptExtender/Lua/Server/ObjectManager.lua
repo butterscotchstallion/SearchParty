@@ -10,7 +10,8 @@ local om = {
         ['x'] = nil,
         ['y'] = nil,
         ['z'] = nil
-    }
+    },
+    ['tickSubscriptionID'] = nil
 }
 
 ---@param uuid UUID of the entity to get
@@ -45,11 +46,10 @@ local function SetTargetPositionToCasterPosition(targetItem, hostCharPosition)
 end
 
 local function UnsubscribeToMovement()
-    for _, subscriptionID in pairs(movementSubscriptions) do
-        SearchParty.Info('Unsubscribing to ' .. subscriptionID)
-        Ext.Entity.Unsubscribe(subscriptionID)
+    if om.tickSubscriptionID then
+        SearchParty.Info('Unsubscribing to ' .. om.tickSubscriptionID)
+        Ext.Entity.Unsubscribe(om.tickSubscriptionID)
     end
-    movementSubscriptions = {}
 end
 
 local function HasMoved(x, y, z)
@@ -58,18 +58,29 @@ local function HasMoved(x, y, z)
         z ~= om.lastPosition.z
 end
 
-local function WatchMovementAndUpdatePosition(target)
+--[[
+Watch movement every few ticks and synchronize position to the
+character hiding
+---@param target target UUID
+--]]
+local function WatchMovementAndUpdatePosition(options)
     UnsubscribeToMovement()
 
-    Ext.Events.Tick:Subscribe(function(e)
+    local hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
+
+    if options.immediateUpdate and hostCharPosition then
+        SetTargetPositionToCasterPosition(options.target, hostCharPosition)
+    end
+
+    om.tickSubscriptionID = Ext.Events.Tick:Subscribe(function(e)
         om.tickCount = om.tickCount + 1
 
         if (om.tickCount >= 2) then
             -- Need to continously check position in here for latest value
-            local hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
+            hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
             if hostCharPosition then
                 if HasMoved(hostCharPosition[1], hostCharPosition[2], hostCharPosition[3]) then
-                    SetTargetPositionToCasterPosition(target, hostCharPosition)
+                    SetTargetPositionToCasterPosition(options.target, hostCharPosition)
                     om.tickCount = 0
                 end
             else
@@ -79,6 +90,7 @@ local function WatchMovementAndUpdatePosition(target)
     end)
 end
 
-om.SetTargetPositionToCasterPosition = SetTargetPositionToCasterPosition
+--om.SetTargetPositionToCasterPosition = SetTargetPositionToCasterPosition
+om.UnsubscribeToMovement = UnsubscribeToMovement
 om.WatchMovementAndUpdatePosition = WatchMovementAndUpdatePosition
 SearchParty.ObjectManager = om

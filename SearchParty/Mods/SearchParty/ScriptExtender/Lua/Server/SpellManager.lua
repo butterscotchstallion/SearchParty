@@ -1,5 +1,6 @@
 local spellManager = {
-    ['addedSpells'] = false
+    ['addedSpells'] = false,
+    ['transformSpellName'] = 'Target_SP_Transform'
 }
 
 function spellManager.AddSpells()
