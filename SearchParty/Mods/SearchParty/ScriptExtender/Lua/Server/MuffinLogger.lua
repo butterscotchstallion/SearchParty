@@ -2,15 +2,17 @@ local muffinLogger = {}
 local logPrefix    = '[SearchParty]'
 local logLevel     = SearchParty['logLevel']
 local COLORS       = {
-    ["magentaStart"] = "\033[33",
-    ["end"]          = "[0m"
+    ["magenta"] = "\x1b[1;35m",
+    ["red"]     = "\x1b[1;31m",
+    ["yellow"]  = "\x1b[1;33m",
+    ["end"]     = ""
 }
 
 --The annotations for the print functions are NYI
 ---@param message string
 ---@param level string
 function muffinLogger.Log(message, level)
-    local fmtMsg = string.format('%s[%s] %s', logPrefix, level, message)
+    local fmtMsg = string.format('%s%s[%s] %s%s', COLORS['magenta'], logPrefix, level, message, COLORS['end'])
     if level == 'CRITICAL' then
         Ext.Utils.PrintError(fmtMsg)
     elseif level == 'WARN' then

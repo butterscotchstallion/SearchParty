@@ -4,6 +4,7 @@
     <region id="Templates">
         <node id="Templates">
             <children>
+                <!--Wand of Transformation-->
                 <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="hb4e8134e211e46eb963b65f2c8a5392983b3" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h2539346b99534f58a040c2d5da9f4950gd84" version="1" />
@@ -32,6 +33,180 @@
                         </node>
                     </children>
                 </node>
+
+                <!--Polymorph: hiding-->
+                <node id="GameObjects">
+                    <attribute id="CanClimbLadders" type="bool" value="False" />
+                    <attribute id="CharacterVisualResourceID" type="FixedString" value="7a6ba872-9dc2-40a2-8e73-9f2d3030d9ba" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd9f3c716g537eg4dd7g9b64g8b1caca1fc74" version="1" />
+                    <attribute id="Faction" type="guid" value="3d5ae1a1-9aa4-a688-2385-c452d5434dcd" />
+                    <attribute id="Flag" type="int32" value="0" />
+                    <attribute id="FoleyMediumResourceID" type="FixedString" value="94a34714-8398-59e6-cb9e-180c44d0307e" />
+                    <attribute id="GeneratePortrait" type="LSString" value="Icon_Sheep" />
+                    <attribute id="Icon" type="FixedString" value="7acc30a8-0eb3-4f02-d1f6-4a0d5dc33011-_(Icon_Sheep)" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="LightID" type="FixedString" value="b62fa66d-5720-449a-96ea-3d69f0facfce" />
+                    <attribute id="MapKey" type="FixedString" value="f2795a0d-63df-436d-b1f0-54d2d348e39c" />
+                    <attribute id="Name" type="LSString" value="Sheep_A" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="071800ad-d4d9-4a63-82a7-4e786ab19449" />
+                    <attribute id="PhysicsTemplate" type="FixedString" value="405a3950-fc02-a0df-b77b-04342c2960a3" />
+                    <attribute id="SpotSneakers" type="bool" value="False" />
+                    <attribute id="Stats" type="FixedString" value="Sheep" />
+                    <attribute id="Type" type="FixedString" value="character" />
+                    <attribute id="VisualTemplate" type="FixedString" value="3cdfbc42-d1bb-356e-4262-bf8a3a54539a" />
+                    <attribute id="VocalAlertResourceID" type="FixedString" value="e63ace16-2b7d-8b19-a7cf-4552489c4c8e" />
+                    <attribute id="VocalAwakeResourceID" type="FixedString" value="8695b077-1e91-3d46-e812-6371b1b732ae" />
+                    <attribute id="VocalBoredResourceID" type="FixedString" value="da3c7142-0fa7-66b8-94f5-aa5ea7ca3580" />
+                    <attribute id="VocalDeathResourceID" type="FixedString" value="e86d2af7-9cbc-3eda-7f86-1758071d9728" />
+                    <attribute id="VocalDodgeResourceID" type="FixedString" value="64f3c246-32ef-29c3-61f1-653235ccf220" />
+                    <attribute id="VocalExhaustedResourceID" type="FixedString" value="602a3f3c-739c-5fce-8e51-ee3e7cf61945" />
+                    <attribute id="VocalPainResourceID" type="FixedString" value="485d0d4f-8b58-93ab-7ac7-576072c78a4e" />
+                    <attribute id="VocalRelaxedResourceID" type="FixedString" value="ab22c52d-8151-a71d-650a-54810729d00d" />
+                    <attribute id="VocalSnoreResourceID" type="FixedString" value="ed12a408-16ed-cfc9-fd98-cc138407ff02" />
+                    <attribute id="VocalWeakResourceID" type="FixedString" value="46dacb11-fc06-b269-ff75-4a1e1e9aa015" />
+                    <attribute id="_OriginalFileVersion_" type="int64" value="144115207403209014" />
+                    <children>
+                        <node id="Bounds">
+                            <children>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="1.2" />
+                                    <attribute id="Max" type="fvec3" value="0.394294 0.901091 0.686815" />
+                                    <attribute id="Min" type="fvec3" value="-0.394294 -0.000462668 -0.760036" />
+                                    <attribute id="Radius" type="float" value="0.3" />
+                                    <attribute id="Shape" type="uint8" value="2" />
+                                    <attribute id="Type" type="uint8" value="0" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="1.1401687" />
+                                    <attribute id="Max" type="fvec3" value="0.33784553 1.1316681 0.5799875" />
+                                    <attribute id="Min" type="fvec3" value="-0.33784553 -0.008500576 -0.7200124" />
+                                    <attribute id="Radius" type="float" value="0.8641358" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="1" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="1.2" />
+                                    <attribute id="Max" type="fvec3" value="0.394294 0.901091 0.686815" />
+                                    <attribute id="Min" type="fvec3" value="-0.394294 -0.000462668 -0.760036" />
+                                    <attribute id="Radius" type="float" value="0.55" />
+                                    <attribute id="Shape" type="uint8" value="2" />
+                                    <attribute id="Type" type="uint8" value="2" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="LocomotionParams">
+                            <attribute id="WorldClimbingBlendspace_DownA" type="FixedString" value="575b6b01-b21a-62ff-7883-433fe47bf23a" />
+                            <attribute id="WorldClimbingBlendspace_DownB" type="FixedString" value="4a6f8da3-6276-967f-8f1a-13f41c17c949" />
+                            <attribute id="WorldClimbingBlendspace_DownBHeight" type="float" value="1" />
+                            <attribute id="WorldClimbingBlendspace_UpA" type="FixedString" value="b566ed99-b547-2b59-7c7e-7ab982e9675b" />
+                            <attribute id="WorldClimbingBlendspace_UpB" type="FixedString" value="6944f681-0d92-8f01-8c1d-f76e5505d236" />
+                            <attribute id="WorldClimbingBlendspace_UpBHeight" type="float" value="1" />
+                            <attribute id="WorldClimbingRadius" type="float" value="0.8" />
+                        </node>
+                        <node id="PickingPhysics">
+                            <children>
+                                <node id="PickingPhysicsTemplates">
+                                    <attribute id="MapKey" type="FixedString" value="CharacterSittingPicking" />
+                                    <attribute id="MapValue" type="FixedString" value="17d6a1c8-e453-fbda-5769-38f4d950a50a" />
+                                </node>
+                                <node id="PickingPhysicsTemplates">
+                                    <attribute id="MapKey" type="FixedString" value="CharacterLyingPicking" />
+                                    <attribute id="MapValue" type="FixedString" value="6323b0ce-dab3-6e85-bebc-301aceb84602" />
+                                </node>
+                                <node id="PickingPhysicsTemplates">
+                                    <attribute id="MapKey" type="FixedString" value="CharacterDeadPicking" />
+                                    <attribute id="MapValue" type="FixedString" value="b99909fb-25cb-fdf8-39c9-53aeefc5d3db" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="Tags">
+                            <children>
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="c52888c3-4131-41e7-89e4-f4366a334289" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
+                <!-- Character visual with base visual set to item -->
+                <node id="Resource">
+                    <attribute id="BaseVisual" type="FixedString" value="93d0ca98-66a7-4726-b42f-c32fbed1da71" />
+                    <attribute id="BodySetVisual" type="FixedString" value="03b494ab-730e-cb1a-d2e5-cca2cc827b49" />
+                    <attribute id="ID" type="FixedString" value="7a6ba872-9dc2-40a2-8e73-9f2d3030d9ba" />
+                    <attribute id="Name" type="LSString" value="SP_Polymorph_Hiding_7a6ba872-9dc2-40a2-8e73-9f2d3030d9ba" />
+                    <attribute id="ShowEquipmentVisuals" type="bool" value="False" />
+                    <children>
+                        <node id="MaterialOverrides">
+                            <attribute id="MaterialResource" type="FixedString" value="" />
+                            <children>
+                                <node id="ColorPreset">
+                                    <attribute id="ForcePresetValues" type="bool" value="False" />
+                                    <attribute id="GroupName" type="FixedString" value="" />
+                                    <attribute id="MaterialPresetResource" type="FixedString" value="" />
+                                </node>
+                                <node id="MaterialPresets" />
+                                <node id="ScalarParameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="SecondaryColourIntensity" />
+                                    <attribute id="Value" type="float" value="1" />
+                                </node>
+                                <node id="ScalarParameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="IrisEdgeStrength" />
+                                    <attribute id="Value" type="float" value="0.6" />
+                                </node>
+                                <node id="ScalarParameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="Redness" />
+                                    <attribute id="Value" type="float" value="1" />
+                                </node>
+                                <node id="Vector3Parameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="Eyes_IrisColour" />
+                                    <attribute id="Value" type="fvec3" value="0.9743002 0.6523701 0.30212548" />
+                                </node>
+                                <node id="Vector3Parameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="Eyes_IrisSecondaryColour" />
+                                    <attribute id="Value" type="fvec3" value="0.40982574 0.16687226 0.04145189" />
+                                </node>
+                                <node id="Vector3Parameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="Eyes_BloodColour" />
+                                    <attribute id="Value" type="fvec3" value="0.35865393 0.04145189 0.034230206" />
+                                </node>
+                                <node id="Vector3Parameters">
+                                    <attribute id="Color" type="bool" value="False" />
+                                    <attribute id="Custom" type="bool" value="True" />
+                                    <attribute id="Enabled" type="bool" value="False" />
+                                    <attribute id="Parameter" type="FixedString" value="Eyes_ScleraColour" />
+                                    <attribute id="Value" type="fvec3" value="0.3537409 0.23882797 0.17677431" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="RealMaterialOverrides" />
+                        <node id="Slots">
+                            <attribute id="Bone" type="FixedString" value="" />
+                            <attribute id="Slot" type="FixedString" value="Head" />
+                            <attribute id="VisualResource" type="FixedString" value="122f1a9e-3496-413f-1c2b-7531d887f8c4" />
+                        </node>
+                    </children>
+                </node>
+
+                <!-- End of nodes -->
             </children>
         </node>
     </region>
