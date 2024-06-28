@@ -9,7 +9,10 @@ end
 
 local function OnHide(targetUUID)
     Osi.PROC_GLO_Monitor_EntityFoop(Osi.GetHostCharacter())
-    SearchParty.ObjectManager.WatchMovementAndUpdatePosition(targetUUID)
+    SearchParty.ObjectManager.WatchMovementAndUpdatePosition({
+        ['targetUUID']      = targetUUID,
+        ['immediateUpdate'] = true
+    })
 end
 
 local function OnCastedTargetSpell(caster, target, spellName, spellType, spellElement, storyActionID)

@@ -11,7 +11,7 @@ function spellManager.AddSpells()
         Osi.AddSpell(Osi.GetHostCharacter(), spellName, 1)
     end
     spellManager['addedSpells'] = true
-    SearchParty['Info']("Added spells")
+    SearchParty.Info("Added spells")
 end
 
 SearchParty['SpellManager'] = spellManager

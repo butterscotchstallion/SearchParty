@@ -18,6 +18,8 @@ new entry "Target_SP_Transform"
 		data "UseCosts" ""
 		data "MaximumTargets" "1"
 		data "SpellProperties" "ApplyStatus(SELF, GREATER_INVISIBILITY, 100, -1)"
+		data "SpellFlags" "IgnoreSilence;RangeIgnoreVerticalThreshold;HasHighGroundRangeExtension;IgnoreVisionBlock"
+		
 		//ApplyStatus(SELF, GREATER_INVISIBILITY, 100, -1);
 		//data "TargetConditions" "Item()"
         //TODO: add status check here
