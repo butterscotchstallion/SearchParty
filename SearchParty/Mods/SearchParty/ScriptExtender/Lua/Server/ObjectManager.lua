@@ -28,38 +28,32 @@ end
 local function UnsubscribeToMovement()
     if om.tickSubscriptionID then
         SearchParty.Info('Unsubscribing to ' .. om.tickSubscriptionID)
-        Ext.Entity.Unsubscribe(om.tickSubscriptionID)
+        Ext.Events.Tick:Unsubscribe(om.tickSubscriptionID)
     end
+end
+
+local function StopSynchronizingPosition(targetUUID)
+    SearchParty.Info('Putting down ' .. targetUUID)
+    om.targetItemUUID = nil
+    UnsubscribeToMovement()
 end
 
 ---@param target UUID
 ---@param hostCharPosition table
 local function SetTargetPositionToCasterPosition(targetUUID, hostCharPosition)
-    --[[
-    SearchParty.Info('Setting object position to ' ..
-        hostCharPosition[1] .. ', ' .. hostCharPosition[2] .. ',' .. hostCharPosition[3])
-    --]]
-    -- Clear item if we use it on the same item
-    if om.targetItemUUID and targetUUID == om.targetItemUUID then
-        SearchParty.Info('Clearing item')
-        om.targetItemUUID = nil
-    else
-        SearchParty.Info('Pretending to be a ' .. targetUUID)
-
-        Osi.ToTransform(
-            targetUUID,
-            hostCharPosition[1],
-            hostCharPosition[2],
-            hostCharPosition[3],
-            0,
-            0,
-            0
-        )
-        om.targetItemUUID = targetUUID
-        om.lastPosition.x = hostCharPosition[1]
-        om.lastPosition.y = hostCharPosition[2]
-        om.lastPosition.z = hostCharPosition[3]
-    end
+    Osi.ToTransform(
+        targetUUID,
+        hostCharPosition[1],
+        hostCharPosition[2],
+        hostCharPosition[3],
+        0,
+        0,
+        0
+    )
+    om.targetItemUUID = targetUUID
+    om.lastPosition.x = hostCharPosition[1]
+    om.lastPosition.y = hostCharPosition[2]
+    om.lastPosition.z = hostCharPosition[3]
 end
 
 ---@param x integer
@@ -78,39 +72,38 @@ character hiding
 --]]
 ---@param options table
 local function WatchMovementAndUpdatePosition(options)
-    if options.targetUUID or om.targetUUID then
-        local tickSubscriptionID = nil
+    local tickSubscriptionID = nil
 
-        --When the tick count hits or exceeds this value, update position of object
-        local tickInterval = 1
-        local hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
+    --When the tick count hits or exceeds this value, update position of object
+    local tickInterval = 1
+    local hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
 
-        --On first activation, immediately set position
-        if options.immediateUpdate and hostCharPosition then
-            SetTargetPositionToCasterPosition(options.targetUUID, hostCharPosition)
-        end
-
-        tickSubscriptionID = Ext.Events.Tick:Subscribe(function(e)
-            om.tickCount = om.tickCount + 1
-
-            if (om.tickCount >= tickInterval) then
-                -- Need to continously check position in here for latest value
-                hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
-                if hostCharPosition then
-                    if HasMoved(hostCharPosition[1], hostCharPosition[2], hostCharPosition[3]) then
-                        SetTargetPositionToCasterPosition(options.targetUUID, hostCharPosition)
-                        om.tickCount = 0
-                    end
-                else
-                    SearchParty.Critical('Failed to get host character position')
-                end
-            end
-        end)
-
-        om.tickSubscriptionID = tickSubscriptionID
+    --On first activation, immediately set position
+    if options.immediateUpdate and hostCharPosition then
+        SetTargetPositionToCasterPosition(options.targetUUID, hostCharPosition)
     end
+
+    tickSubscriptionID = Ext.Events.Tick:Subscribe(function(e)
+        om.tickCount = om.tickCount + 1
+
+        if (om.tickCount >= tickInterval) then
+            -- Need to continously check position in here for latest value
+            hostCharPosition = GetEntityPosition(Osi.GetHostCharacter())
+            if hostCharPosition then
+                if HasMoved(hostCharPosition[1], hostCharPosition[2], hostCharPosition[3]) then
+                    SetTargetPositionToCasterPosition(options.targetUUID, hostCharPosition)
+                    om.tickCount = 0
+                end
+            else
+                SearchParty.Critical('Failed to get host character position')
+            end
+        end
+    end)
+
+    om.tickSubscriptionID = tickSubscriptionID
 end
 
 om.UnsubscribeToMovement          = UnsubscribeToMovement
 om.WatchMovementAndUpdatePosition = WatchMovementAndUpdatePosition
+om.StopSynchronizingPosition      = StopSynchronizingPosition
 SearchParty.ObjectManager         = om

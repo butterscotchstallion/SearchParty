@@ -9,10 +9,17 @@ end
 
 local function OnHide(targetUUID)
     Osi.PROC_GLO_Monitor_EntityFoop(Osi.GetHostCharacter())
-    SearchParty.ObjectManager.WatchMovementAndUpdatePosition({
-        ['targetUUID']      = targetUUID,
-        ['immediateUpdate'] = true
-    })
+
+    if not SearchParty.ObjectManager.targetItemUUID then
+        SearchParty.Info('Pretending to be a ' .. targetUUID)
+
+        SearchParty.ObjectManager.WatchMovementAndUpdatePosition({
+            ['targetUUID']      = targetUUID,
+            ['immediateUpdate'] = true
+        })
+    elseif SearchParty.ObjectManager.targetItemUUID == targetUUID then
+        SearchParty.ObjectManager.StopSynchronizingPosition(targetUUID)
+    end
 end
 
 local function OnCastedTargetSpell(caster, target, spellName, spellType, spellElement, storyActionID)
