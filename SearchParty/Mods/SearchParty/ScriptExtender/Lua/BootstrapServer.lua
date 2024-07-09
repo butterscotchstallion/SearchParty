@@ -3,7 +3,9 @@
 #             Search Party              #
 #########################################
 --]]
-SearchParty = {}
+SearchParty = {
+    ['logLevel'] = 'DEBUG'
+}
 
 Ext.Require('Server/Utils.lua')
 Ext.Require('Server/ObjectManager.lua')
